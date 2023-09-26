@@ -29,9 +29,16 @@ namespace AdventOfCode15
 
         private static bool HasPairs (string input)
         {
-            for (var i = 0; i < input.Length; i++)
+            for (var i = 0; i < input.Length -4; i++)
             {
-                // substring 1 & 2, if .contains 1 return true
+                // gör substrings med i
+                var sub2 = "";
+                var sub1 = "";
+                
+                if (sub2.Contains(sub1))
+                {
+                    return true;
+                }
             }
             return false;
         }

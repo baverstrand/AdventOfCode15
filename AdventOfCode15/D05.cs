@@ -22,6 +22,10 @@ namespace AdventOfCode15
                 //{
                 //    counter++;
                 //}
+                if (HasPairs(line) && HasRepeatedLetter(line))
+                {
+                    counter++;
+                }
             }
             Console.WriteLine(counter);
             Console.ReadLine();
@@ -29,13 +33,28 @@ namespace AdventOfCode15
 
         private static bool HasPairs (string input)
         {
-            for (var i = 0; i < input.Length -4; i++)
+            for (var i = 0; i < input.Length -3; i++)
             {
                 // gör substrings med i
-                var sub2 = "";
-                var sub1 = "";
+                var sub1 = input.Substring(i, 2);
+                var sub2 = input.Substring(i + 2);
                 
                 if (sub2.Contains(sub1))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private static bool HasRepeatedLetter(string input)
+        {
+            for (var i = 0; i < input.Length - 2; i++)
+            {
+                // gör substrings med i
+                var letter = input[i];
+
+                if (input[i+2] == letter)
                 {
                     return true;
                 }

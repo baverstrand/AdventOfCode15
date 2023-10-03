@@ -23,75 +23,40 @@ namespace AdventOfCode15
                 var instruction = line.Split(' ');
                 if (instruction[0] == "toggle")
                 {
-                    grid = Toggle(grid, int.Parse(instruction[1]), int.Parse(instruction[4]), int.Parse(instruction[2]), int.Parse(instruction[5]));
+                    var coord1 = instruction[1].Split(',');
+                    var coord2 = instruction[3].Split(',');
+
+                    grid = Toggle(grid, int.Parse(coord1[0]), int.Parse(coord1[1]), int.Parse(coord2[0]), int.Parse(coord2[1]));
+                }
+                else if (instruction[1] == "on")
+                {
+                    var coord1 = instruction[2].Split(',');
+                    var coord2 = instruction[4].Split(',');
+                    grid = TurnOn(grid, int.Parse(coord1[0]), int.Parse(coord1[1]), int.Parse(coord2[0]), int.Parse(coord2[1]));
+                }
+                else
+                {
+                    var coord1 = instruction[2].Split(',');
+                    var coord2 = instruction[4].Split(',');
+                    grid = TurnOff(grid, int.Parse(coord1[0]), int.Parse(coord1[1]), int.Parse(coord2[0]), int.Parse(coord2[1]));
                 }
             }
         }
 
-        private static List<List<bool>> Toggle(List<List<bool>> grid, int fromRow, int toRow, int fromColumn, int toColumn)
+        private static List<List<bool>> TurnOff(List<List<bool>> grid, int fromRow, int toRow, int fromColumn, int toColumn)
         {
-            // fixa första raden
-            for (var i = fromColumn; i < grid[0].Count; i++)
-            {
-                if (grid[fromRow][i] is true)
-                {
-                    grid[fromRow][i] = false;
-                }
-                else
-                {
-                    grid[fromRow][i] = true;
-                }
-            }
-
-            // fixa mellanraderna
-            for (var i = fromRow + 1; i < toRow; i++)
-            {
-                for (var j = 0; i < grid[0].Count; j++)
-                {
-                    if (grid[i][j] is true)
-                    {
-                        grid[i][j] = false;
-                    }
-                    else
-                    {
-                        grid[i][j] = true;
-                    }
-                }
-            }
-            // fixa sista raden
-
-            for (var i = 0; i <= toColumn; i++ )
-            {
-                if (grid[toRow][i] is true)
-                {
-                    grid[toRow][i] = false;
-                }
-                else
-                {
-                    grid[toRow][i] = true;
-                }
-            }
-            return grid;
+            throw new NotImplementedException();
         }
 
         private static List<List<bool>> TurnOn(List<List<bool>> grid, int fromRow, int toRow, int fromColumn, int toColumn)
         {
-            var row = fromRow;
-            var column = fromColumn;
-            while (row <= toRow && column <= toColumn)
-            {
-                if (grid[row][column] is true)
-                {
-                    grid[row][column] = false;
-                }
-                else
-                {
-                    grid[row][column] = true;
-                }
+            
+            return grid;
+        }
 
-                row++;
-                column++;
-            }
+        private static List<List<bool>> Toggle(List<List<bool>> grid, int fromRow, int toRow, int fromColumn, int toColumn)
+        {
+           
             return grid;
         }
 

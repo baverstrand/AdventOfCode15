@@ -23,5 +23,12 @@ namespace AdventOfCode15.Help
             var result = File.ReadAllLines(path);
             return result;
         }
+
+        public static byte[] ReadBytes(string day)
+        {
+            var path = $@"C:\Users\SofiePolestar\source\repos\AdventOfCode15\AdventOfCode15\Input\{day}.txt";
+            var result = File.ReadAllBytes(path);
+            return result;
+        }
     }
 }

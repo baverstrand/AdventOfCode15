@@ -17,7 +17,14 @@ namespace AdventOfCode15
 
         public static void Run()
         {
-            var input = "3113322113";
+            var sequence = "3113322113";
+            var rounds = 40;
+
+            for (var i = 0; i < rounds; i++)
+            {
+                var newSequence = "";
+
+            }
         }
     }
 }
